@@ -26,83 +26,12 @@ a {text-decoration: none;}
     margin-right: 25px;
     width: 25px;
     position: relative;
-}
-.navbar .card-profile .card .add-to-card {
-    position: absolute;
-    top: 63px;
-    right: 0;
-    background-color: #fff;
-    box-shadow: 1px 3px 7px rgba(1, 1, 1, 0.3);
-    border-radius: 8px;
-    width: 360px;
-    padding: 20px;
-}
-.navbar .card-profile .card .add-to-card .item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0;
-}
-.navbar .card-profile .card .add-to-card h4 {
-    padding-bottom: 20px;
-    font-size: 20px;
-    border-bottom: 1px solid #E8E7EB;
-    margin: 0;
-}
-.navbar .card-profile .card .add-to-card .item .product {
-    width: 100px;
-    height: 96px;
-    border-radius: 7px;
-    overflow: hidden;
-}
-.navbar .card-profile .card .add-to-card .item .product img,
-.navbar .card-profile .card .add-to-card .item .delete img {
-    max-width: 100%;
-    height: 100%;
-}
-.navbar .card-profile .card .add-to-card .item .info {
-    margin-left: 20px;
-}
-.navbar .card-profile .card .add-to-card .item .info p {
-    margin: 0;
-}
-.navbar .card-profile .card .add-to-card .item .info p:first-of-type {
-    color: #9E9FA1;
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-.navbar .card-profile .card .add-to-card .item .info p:last-of-type {
-    color: #9E9FA1;
-    /* margin-bottom: 30px; */
-}
-.navbar .card-profile .card .add-to-card .item .info p:last-of-type b {
-    color: #000;
-}
-.navbar .card-profile .card .add-to-card .item .delete {
-    width: 30px;
     cursor: pointer;
-}
-.navbar .card-profile .card .add-to-card button {
-    background-color: #FF7E17;
-    color: #fff;
-    outline: 0;
-    border: 0;
-    padding: 15px 0;
-    width: 100%;
-    border-radius: 7px;
-    cursor: pointer;
-    font-size: 20px;
-}
-.navbar .card-profile .card .add-to-card button:active {
-    transform: scale(0.98);
 }
 .navbar .card-profile .card img,
 .navbar .card-profile .profile img {
     width: 100%;
     height: 100%;
-}
-.navbar .card-profile .card {
-    cursor: pointer;
 }
 .navbar .card-profile .card .sale {
     position: absolute;
@@ -113,11 +42,90 @@ a {text-decoration: none;}
     height: 10px;
     border-radius: 50px;
     color: #fff;
-    font-size: 10px;
+    font-size: 8px;
+    padding: 1.3px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1px;
+}
+.navbar .card-profile .card.show .add-to-card {
+    opacity: 1;
+    z-index: -999;
+}
+.navbar .card-profile .card .add-to-card {
+    transition: 0.3s ease;
+    opacity: 0;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 1px 3px 6px rgba(1, 1, 1, 0.3);
+    top: 63px;
+    left: -268px;
+    width: 310px;
+    padding: 20px;
+    border-radius: 8px;
+}
+.navbar .card-profile .card .add-to-card h4 {
+    font-size: 30px;
+    border-bottom: 1px solid #E8E7EB;
+    padding-bottom: 20px;
+    margin: 0 0 10px;
+}
+.navbar .card-profile .card .add-to-card .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar .card-profile .card .add-to-card .item .info {
+    margin: 0 25px;
+}
+.navbar .card-profile .card .add-to-card .item .info p {
+    color: #9E9FA1;
+}
+.navbar .card-profile .card .add-to-card .item .info p b {
+    color: #000;
+}
+.navbar .card-profile .card .add-to-card .item .delete {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease-in;
+    border-radius: 7px;
+}
+.navbar .card-profile .card .add-to-card .item .delete:hover {
+    background-color: #FF7E17;
+    opacity: 0.3;
+}
+.navbar .card-profile .card .add-to-card .item .delete img {
+    width: 80%;
+}
+.navbar .card-profile .card .add-to-card .item .product {
+    margin: 0;
+    padding: 0;
+    width: 70px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+.navbar .card-profile .card .add-to-card button {
+    background-color: #FF7E17;
+    font-size: 20px;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    width: 100%;
+    border-radius: 7px;
+    padding: 15px 0;
+    cursor: pointer;
+}
+.navbar .card-profile .card .add-to-card button:active {
+    transform: scale(0.98);
+}
+.navbar .card-profile .card .add-to-card .item .product img {
+    width: 100%;
+    height: 100%;
 }
 .navbar .card-profile .profile {
     width: 40px;
@@ -138,6 +146,7 @@ a {text-decoration: none;}
 .overlay {
     background-color: rgba(1, 1, 1, 0.3);
     position: fixed;
+    display: none;
     z-index: 90;
     top: 0;
     left: 0;
@@ -145,8 +154,12 @@ a {text-decoration: none;}
     height: 100%;
 }
 @media screen and (max-width: 991px) {
-    .navbar .nav {
+    .overlay.show {
         display: block;
+    }
+    .navbar .nav {
+        transition: transform 0.3s ease-in;
+        transform: translateX(-100%);
         position: fixed;
         top: 0;
         left: 0;
@@ -155,6 +168,9 @@ a {text-decoration: none;}
         background: #fff;
         box-shadow: 1px 3px 7px rgba(1, 1, 1, 0.3);
         z-index: 100;
+    }
+    .navbar .nav.show {
+        transform: translateX(0);
     }
     .navbar .bar {
         margin-right: 20px;
