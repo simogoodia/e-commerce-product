@@ -1,9 +1,10 @@
 /* eslint-disable react/style-prop-object */
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./product.css";
 
 function Product(props) {
+    const [idxImg, setIdxImg] = useState(1);
     useEffect(() => {
         const minus = document.querySelector(".items .minus img");
         if(props.numProduct <= 0)
@@ -17,10 +18,20 @@ function Product(props) {
         mainImg.src = e.currentTarget.src.replace("-thumbnail", "");
     }
     const prevImg = () => {
-
+        const productImgs = document.querySelectorAll(".product-image .thumbnails img"),
+            mainImgProduct = document.querySelector(".product-image .main-img img");
+        mainImgProduct.src = productImgs[idxImg].src.replace("-thumbnail", "");
+        setIdxImg(idxImg - 1);
+        if(idxImg <= 1)
+            setIdxImg(productImgs.length-1);
     }
     const nextImg = () => {
-        
+        const productImgs = document.querySelectorAll(".product-image .thumbnails img"),
+            mainImgProduct = document.querySelector(".product-image .main-img img");
+        mainImgProduct.src = productImgs[idxImg].src.replace("-thumbnail", "");
+        setIdxImg(idxImg + 1);
+        if(idxImg >= productImgs.length-1)
+            setIdxImg(1);
     }
 
     return (
