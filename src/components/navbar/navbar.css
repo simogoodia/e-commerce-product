@@ -60,7 +60,7 @@ a {text-decoration: none;}
     background-color: #fff;
     box-shadow: 1px 3px 6px rgba(1, 1, 1, 0.3);
     top: 63px;
-    left: -268px;
+    left: -241px;
     width: 310px;
     padding: 15px 0;
     border-radius: 8px;
@@ -199,6 +199,7 @@ a {text-decoration: none;}
     }
     .navbar .nav ul .navbar-nav {
         margin-top: 30px;
+        margin-left: -28px;
     }
     .navbar .nav ul li {
         margin-bottom: 20px;

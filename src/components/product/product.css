@@ -156,6 +156,9 @@
     transform: scale(0.98);
 }
 @media screen and (max-width: 991px) {
+    .product-page .product-details {
+        margin: 0;
+    }
     .product-page .product-details .items-add-card {
         display: block;
         width: 100%;

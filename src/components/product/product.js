@@ -37,9 +37,9 @@ function Product() {
                         <p className="through">$250.00</p>
                         <div className="items-add-card">
                             <div className="items">
-                                    <di className="minus">
+                                    <div className="minus">
                                         <img src="../images/icon-minus.svg" />
-                                    </di>
+                                    </div>
                                     <span className="item">0</span>
                                     <div className="plus">
                                         <img src="../images/icon-plus.svg" />
