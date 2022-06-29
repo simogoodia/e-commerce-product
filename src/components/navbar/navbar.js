@@ -1,9 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/alt-text */
+import React, { useEffect } from "react";
 import "./navbar.css";
 
 
-function Navbar() {
+function Navbar(props) {
+    useEffect(() => {
+        const sale = document.querySelector(".card-profile .card .sale");
+        if(props.numProduct <= 0) {
+            sale.classList.remove("show");
+        }
+    }, [props.numProduct]);
     const showAddToCard = () => {
         document.querySelector(".card").classList.toggle("show");
     }
@@ -14,6 +21,16 @@ function Navbar() {
     const hiddenMenu = () => {
         document.querySelector(".overlay").classList.remove("show");
         document.querySelector(".navbar .nav").classList.remove("show");
+    }
+    const removeProduct = () => {
+        const addToCard = document.querySelector(".card-profile .card .add-to-card");
+        const sale = document.querySelector(".card-profile .card .sale");
+        const card = document.querySelector(".card");
+        addToCard.classList.remove("show");
+        addToCard.classList.add("hidden");
+        sale.classList.remove("show");
+        card.classList.remove("show");
+        props.setNumProduct(0);
     }
 
     return (
@@ -55,25 +72,27 @@ function Navbar() {
                     </div>
                     <div className="card-profile">
                         <div className="card" onClick={showAddToCard}>
-                            <div className="sale"></div>
+                            <div className="sale">{props.numProduct}</div>
                             <img src="../images/icon-cart.svg" />
-                            <div className="add-to-card" onClick={(e) => {e.stopPropagation()}}>
+                            <div className="add-to-card hidden" onClick={(e) => {e.stopPropagation()}}>
                                 <h4>Card</h4>
-                                {/* <div className="item">
-                                    <div className="product">
-                                        <img src="../images/image-product-1-thumbnail.jpg" />
+                                <div className="items">
+                                    <div className="item">
+                                        <div className="product">
+                                            <img src="../images/image-product-1-thumbnail.jpg" />
+                                        </div>
+                                        <div className="info">
+                                            <p>Fall Limited Edition Sneakers</p>
+                                            <p>$125.00 x {props.numProduct} <b>${125 * props.numProduct}</b></p>
+                                        </div>
+                                        <div className="delete" onClick={removeProduct}>
+                                            <img src="../images/icon-delete.svg"  />
+                                        </div>
                                     </div>
-                                    <div className="info">
-                                        <p>Fall Limited Edition Sneakers</p>
-                                        <p>$125.00 x 3 <b>$375.00</b></p>
-                                    </div>
-                                    <div className="delete">
-                                        <img src="../images/icon-delete.svg"  />
+                                    <div className="btn">
+                                        <button>Checkout</button>
                                     </div>
                                 </div>
-                                <div className="btn">
-                                    <button>Checkout</button>
-                                </div> */}
                                 <div className="empty-msg">Your card is empty.</div>
                             </div>
                         </div>

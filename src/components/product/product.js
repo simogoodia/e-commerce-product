@@ -1,8 +1,28 @@
 /* eslint-disable react/style-prop-object */
 /* eslint-disable jsx-a11y/alt-text */
+import React, { useEffect } from "react";
 import "./product.css";
 
-function Product() {
+function Product(props) {
+    useEffect(() => {
+        const minus = document.querySelector(".items .minus img");
+        if(props.numProduct <= 0)
+            minus.classList.add("active");
+        else
+            minus.classList.remove("active");
+
+    }, [props.numProduct]);
+    const addMainImg = (e) => {
+        const mainImg = document.querySelector(".main-img img");
+        mainImg.src = e.currentTarget.src.replace("-thumbnail", "");
+    }
+    const prevImg = () => {
+
+    }
+    const nextImg = () => {
+        
+    }
+
     return (
         <>
             <div className="container">
@@ -11,19 +31,19 @@ function Product() {
                         <div className="main-img">
                             <img src="../images/image-product-1.jpg" />
                             <div className="arrows">
-                                <div className="left arrow">
+                                <div className="arrow" onClick={prevImg}>
                                     <img src="../images/icon-previous.svg" />
                                 </div>
-                                <div className="right arrow">
+                                <div className="arrow" onClick={nextImg}>
                                     <img src="../images/icon-next.svg" />
                                 </div>
                             </div>
                         </div>
                         <div className="thumbnails">
-                            <img src="../images/image-product-1-thumbnail.jpg" />
-                            <img src="../images/image-product-2-thumbnail.jpg" />
-                            <img src="../images/image-product-3-thumbnail.jpg" />
-                            <img src="../images/image-product-4-thumbnail.jpg" />
+                            <img src="../images/image-product-1-thumbnail.jpg" onClick={addMainImg} />
+                            <img src="../images/image-product-2-thumbnail.jpg" onClick={addMainImg} />
+                            <img src="../images/image-product-3-thumbnail.jpg" onClick={addMainImg} />
+                            <img src="../images/image-product-4-thumbnail.jpg" onClick={addMainImg} />
                         </div>
                     </div>
                     <div className="product-details">
@@ -38,14 +58,14 @@ function Product() {
                         <div className="items-add-card">
                             <div className="items">
                                     <div className="minus">
-                                        <img src="../images/icon-minus.svg" />
+                                        <img src="../images/icon-minus.svg" onClick={props.decreaseProduct} />
                                     </div>
-                                    <span className="item">0</span>
+                                    <span className="item">{props.numProduct}</span>
                                     <div className="plus">
-                                        <img src="../images/icon-plus.svg" />
+                                        <img src="../images/icon-plus.svg" onClick={props.increaseProduct} />
                                     </div>
                                 </div>
-                            <button className="add-card">
+                            <button className="add-card" onClick={props.addToCardBtn}>
                                 {/* <img src="../images/icon-cart.svg" /> */}
                                 Add to card
                             </button>
