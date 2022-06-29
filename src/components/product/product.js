@@ -40,21 +40,21 @@ function Product(props) {
                 <div className="product-page">
                     <div className="product-image">
                         <div className="main-img">
-                            <img src="../images/image-product-1.jpg" />
+                            <img src="./images/image-product-1.jpg" />
                             <div className="arrows">
                                 <div className="arrow" onClick={prevImg}>
-                                    <img src="../images/icon-previous.svg" />
+                                    <img src="./images/icon-previous.svg" />
                                 </div>
                                 <div className="arrow" onClick={nextImg}>
-                                    <img src="../images/icon-next.svg" />
+                                    <img src="./images/icon-next.svg" />
                                 </div>
                             </div>
                         </div>
                         <div className="thumbnails">
-                            <img src="../images/image-product-1-thumbnail.jpg" onClick={addMainImg} />
-                            <img src="../images/image-product-2-thumbnail.jpg" onClick={addMainImg} />
-                            <img src="../images/image-product-3-thumbnail.jpg" onClick={addMainImg} />
-                            <img src="../images/image-product-4-thumbnail.jpg" onClick={addMainImg} />
+                            <img src="./images/image-product-1-thumbnail.jpg" onClick={addMainImg} />
+                            <img src="./images/image-product-2-thumbnail.jpg" onClick={addMainImg} />
+                            <img src="./images/image-product-3-thumbnail.jpg" onClick={addMainImg} />
+                            <img src="./images/image-product-4-thumbnail.jpg" onClick={addMainImg} />
                         </div>
                     </div>
                     <div className="product-details">
@@ -69,11 +69,11 @@ function Product(props) {
                         <div className="items-add-card">
                             <div className="items">
                                     <div className="minus">
-                                        <img src="../images/icon-minus.svg" onClick={props.decreaseProduct} />
+                                        <img src="./images/icon-minus.svg" onClick={props.decreaseProduct} />
                                     </div>
                                     <span className="item">{props.numProduct}</span>
                                     <div className="plus">
-                                        <img src="../images/icon-plus.svg" onClick={props.increaseProduct} />
+                                        <img src="./images/icon-plus.svg" onClick={props.increaseProduct} />
                                     </div>
                                 </div>
                             <button className="add-card" onClick={props.addToCardBtn}>
