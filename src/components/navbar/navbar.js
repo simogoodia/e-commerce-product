@@ -5,11 +5,7 @@ import "./navbar.css";
 
 function Navbar() {
     const showAddToCard = () => {
-        document.addEventListener("click", (e) => {
-            if(e.target.className !== "card") {
-                document.querySelector(".card").classList.toggle("show");
-            }
-        });
+        document.querySelector(".card").classList.toggle("show");
     }
     const showMenu = () => {
         document.querySelector(".overlay").classList.toggle("show");
@@ -59,24 +55,27 @@ function Navbar() {
                     </div>
                     <div className="card-profile">
                         <div className="card" onClick={showAddToCard}>
-                            <div className="sale">1</div>
+                            <div className="sale"></div>
                             <img src="../images/icon-cart.svg" />
-                            <div className="add-to-card">
+                            <div className="add-to-card" onClick={(e) => {e.stopPropagation()}}>
                                 <h4>Card</h4>
-                                <div className="item">
+                                {/* <div className="item">
                                     <div className="product">
-                                    <img src="../images/image-product-1-thumbnail.jpg" />
+                                        <img src="../images/image-product-1-thumbnail.jpg" />
+                                    </div>
+                                    <div className="info">
+                                        <p>Fall Limited Edition Sneakers</p>
+                                        <p>$125.00 x 3 <b>$375.00</b></p>
+                                    </div>
+                                    <div className="delete">
+                                        <img src="../images/icon-delete.svg"  />
+                                    </div>
                                 </div>
-                                <div className="info">
-                                    <p>Fall Limited Edition Sneakers</p>
-                                    <p>$125.00 x 3 <b>$375.00</b></p>
-                                </div>
-                                <div className="delete">
-                                    <img src="../images/icon-delete.svg"  />
-                                </div>
+                                <div className="btn">
+                                    <button>Checkout</button>
+                                </div> */}
+                                <div className="empty-msg">Your card is empty.</div>
                             </div>
-                            <button>Checkout</button>
-                        </div>
                         </div>
                         <div className="profile">
                             <img src="../images/image-avatar.png" />
