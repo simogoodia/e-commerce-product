@@ -7,28 +7,43 @@ function Product(props) {
     const [idxImg, setIdxImg] = useState(1);
     useEffect(() => {
         const minus = document.querySelector(".items .minus img");
+        const productImgs = document.querySelectorAll(".product-image .thumbnails img");
         if(props.numProduct <= 0)
-            minus.classList.add("active");
+        minus.classList.add("active");
         else
-            minus.classList.remove("active");
-
+        minus.classList.remove("active");
+        productImgs.forEach(img => {
+            img.addEventListener("click", () => {
+                productImgs.forEach(img => {
+                    img.classList.remove("active");
+                });
+                img.classList.add("active");
+            });
+        });
+        productImgs[0].classList.add("active");
     }, [props.numProduct]);
     const addMainImg = (e) => {
-        const mainImg = document.querySelector(".main-img img");
-        mainImg.src = e.currentTarget.src.replace("-thumbnail", "");
+        const mainImg = document.querySelectorAll("#main-img");
+        mainImg.forEach(img => {
+            img.src = e.currentTarget.src.replace("-thumbnail", "");
+        });
     }
     const prevImg = () => {
         const productImgs = document.querySelectorAll(".product-image .thumbnails img"),
-            mainImgProduct = document.querySelector(".product-image .main-img img");
-        mainImgProduct.src = productImgs[idxImg].src.replace("-thumbnail", "");
-        setIdxImg(idxImg - 1);
-        if(idxImg <= 1)
+            mainImgProduct = document.querySelectorAll("#main-img");
+            mainImgProduct.forEach(img => {
+                img.src = productImgs[idxImg].src.replace("-thumbnail", "");
+            });
+            setIdxImg(idxImg - 1);
+            if(idxImg <= 1)
             setIdxImg(productImgs.length-1);
-    }
-    const nextImg = () => {
-        const productImgs = document.querySelectorAll(".product-image .thumbnails img"),
-            mainImgProduct = document.querySelector(".product-image .main-img img");
-        mainImgProduct.src = productImgs[idxImg].src.replace("-thumbnail", "");
+        }
+        const nextImg = () => {
+            const productImgs = document.querySelectorAll(".product-image .thumbnails img"),
+            mainImgProduct = document.querySelectorAll("#main-img");
+            mainImgProduct.forEach(img => {
+                img.src = productImgs[idxImg].src.replace("-thumbnail", "");
+            });
         setIdxImg(idxImg + 1);
         if(idxImg >= productImgs.length-1)
             setIdxImg(1);
@@ -39,19 +54,21 @@ function Product(props) {
             <div className="container">
                 <div className="product-page">
                     <div className="product-image">
-                        <div className="main-img">
-                            <img src="./images/image-product-1.jpg" />
+                        <div className="main-img"  onClick={() =>{
+                                document.querySelector(".popup").classList.add("show");
+                            }} >
+                            <img src="../images/image-product-1.jpg" id="main-img"/>
                             <div className="arrows">
-                                <div className="arrow" onClick={prevImg}>
-                                    <img src="./images/icon-previous.svg" />
+                                <div className="arrow" >
+                                    <img src="../images/icon-previous.svg" onClick={prevImg} />
                                 </div>
-                                <div className="arrow" onClick={nextImg}>
-                                    <img src="./images/icon-next.svg" />
+                                <div className="arrow" >
+                                    <img src="../images/icon-next.svg" onClick={nextImg} />
                                 </div>
                             </div>
                         </div>
                         <div className="thumbnails">
-                            <img src="./images/image-product-1-thumbnail.jpg" onClick={addMainImg} />
+                            <img className="active" src="../images/image-product-1-thumbnail.jpg" onClick={addMainImg} />
                             <img src="./images/image-product-2-thumbnail.jpg" onClick={addMainImg} />
                             <img src="./images/image-product-3-thumbnail.jpg" onClick={addMainImg} />
                             <img src="./images/image-product-4-thumbnail.jpg" onClick={addMainImg} />
@@ -81,6 +98,30 @@ function Product(props) {
                                 Add to card
                             </button>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div className="popup">
+                <img src="./images/icon-close.svg" onClick={() =>{
+                    document.querySelector(".popup").classList.remove("show");
+                }} />
+                <div className="product-image">
+                    <div className="main-img">
+                        <img src="./images/image-product-1.jpg" id="main-img" />
+                        <div className="arrows">
+                            <div className="arrow" onClick={prevImg}>
+                                <img src="./images/icon-previous.svg" />
+                            </div>
+                            <div className="arrow" onClick={nextImg}>
+                                <img src="./images/icon-next.svg" />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="thumbnails">
+                        <img className="active" src="./images/image-product-1-thumbnail.jpg" onClick={addMainImg} />
+                        <img src="./images/image-product-2-thumbnail.jpg" onClick={addMainImg} />
+                        <img src="./images/image-product-3-thumbnail.jpg" onClick={addMainImg} />
+                        <img src="./images/image-product-4-thumbnail.jpg" onClick={addMainImg} />
                     </div>
                 </div>
             </div>
