@@ -187,7 +187,7 @@
     .product-page .product-details .items-add-card .add-card {
         padding: 15px 0;
         font-size: 20px;
-        margin-bottom: 0px;
+        margin-bottom: 50px;
     }
     .product-page .product-image .main-img .arrows {
         display: flex;
@@ -288,4 +288,9 @@
 .popup .product-image .main-img .arrows .arrow img {
     width: 13px;
     height: 17px;
+}
+@media screen and (max-width: 991px) {
+    .popup {
+        display: none;
+    }
 }

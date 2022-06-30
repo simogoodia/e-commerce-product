@@ -5,6 +5,7 @@ import "./product.css";
 
 function Product(props) {
     const [idxImg, setIdxImg] = useState(1);
+    const [idx, setIdx] = useState(0);
     useEffect(() => {
         const minus = document.querySelector(".items .minus img");
         const productImgs = document.querySelectorAll(".product-image .thumbnails img");
@@ -30,23 +31,33 @@ function Product(props) {
     }
     const prevImg = () => {
         const productImgs = document.querySelectorAll(".product-image .thumbnails img"),
+        mainImgProduct = document.querySelectorAll("#main-img");
+        mainImgProduct.forEach(img => {
+            img.src = productImgs[idxImg].src.replace("-thumbnail", "");
+        });
+        setIdxImg(idxImg - 1);
+        if(idxImg <= 1)
+        setIdxImg(productImgs.length-1);
+    }
+    const removeActive = (element) => {
+        element.forEach(img => {
+            img.classList.remove("active");
+        });
+    }
+    const nextImg = () => {
+        const productImgs = document.querySelectorAll(".product-image .thumbnails img"),
+            productImgsPopup = document.querySelectorAll(".popup .product-image .thumbnails img"),
             mainImgProduct = document.querySelectorAll("#main-img");
-            mainImgProduct.forEach(img => {
-                img.src = productImgs[idxImg].src.replace("-thumbnail", "");
-            });
-            setIdxImg(idxImg - 1);
-            if(idxImg <= 1)
-            setIdxImg(productImgs.length-1);
-        }
-        const nextImg = () => {
-            const productImgs = document.querySelectorAll(".product-image .thumbnails img"),
-            mainImgProduct = document.querySelectorAll("#main-img");
-            mainImgProduct.forEach(img => {
-                img.src = productImgs[idxImg].src.replace("-thumbnail", "");
-            });
+        mainImgProduct.forEach(img => {
+            img.src = productImgs[idxImg].src.replace("-thumbnail", "");
+        });
         setIdxImg(idxImg + 1);
         if(idxImg >= productImgs.length-1)
             setIdxImg(1);
+        removeActive(productImgs);
+        productImgs[idxImg].classList.add("active");
+        removeActive(productImgsPopup);
+        productImgsPopup[idxImg].classList.add("active");
     }
 
     return (
@@ -57,21 +68,21 @@ function Product(props) {
                         <div className="main-img"  onClick={() =>{
                                 document.querySelector(".popup").classList.add("show");
                             }} >
-                            <img src="./images/image-product-1.jpg" id="main-img"/>
+                            <img src="../images/image-product-1.jpg" id="main-img"/>
                             <div className="arrows">
                                 <div className="arrow" >
-                                    <img src="./images/icon-previous.svg" onClick={prevImg} />
+                                    <img src="../images/icon-previous.svg" onClick={prevImg} />
                                 </div>
                                 <div className="arrow" >
-                                    <img src="./images/icon-next.svg" onClick={nextImg} />
+                                    <img src="../images/icon-next.svg" onClick={nextImg} />
                                 </div>
                             </div>
                         </div>
                         <div className="thumbnails">
-                            <img className="active" src="./images/image-product-1-thumbnail.jpg" onClick={addMainImg} />
-                            <img src="./images/image-product-2-thumbnail.jpg" onClick={addMainImg} />
-                            <img src="./images/image-product-3-thumbnail.jpg" onClick={addMainImg} />
-                            <img src="./images/image-product-4-thumbnail.jpg" onClick={addMainImg} />
+                            <img className="active" src="../images/image-product-1-thumbnail.jpg" onClick={addMainImg} />
+                            <img src="../images/image-product-2-thumbnail.jpg" onClick={addMainImg} />
+                            <img src="../images/image-product-3-thumbnail.jpg" onClick={addMainImg} />
+                            <img src="../images/image-product-4-thumbnail.jpg" onClick={addMainImg} />
                         </div>
                     </div>
                     <div className="product-details">
@@ -86,15 +97,15 @@ function Product(props) {
                         <div className="items-add-card">
                             <div className="items">
                                     <div className="minus">
-                                        <img src="./images/icon-minus.svg" onClick={props.decreaseProduct} />
+                                        <img src="../images/icon-minus.svg" onClick={props.decreaseProduct} />
                                     </div>
                                     <span className="item">{props.numProduct}</span>
                                     <div className="plus">
-                                        <img src="./images/icon-plus.svg" onClick={props.increaseProduct} />
+                                        <img src="../images/icon-plus.svg" onClick={props.increaseProduct} />
                                     </div>
                                 </div>
                             <button className="add-card" onClick={props.addToCardBtn}>
-                                {/* <img src="../images/icon-cart.svg" /> */}
+                                {/* <img src=".../images/icon-cart.svg" /> */}
                                 Add to card
                             </button>
                         </div>
@@ -102,26 +113,26 @@ function Product(props) {
                 </div>
             </div>
             <div className="popup">
-                <img src="./images/icon-close.svg" onClick={() =>{
+                <img src="../images/icon-close.svg" onClick={() =>{
                     document.querySelector(".popup").classList.remove("show");
                 }} />
                 <div className="product-image">
                     <div className="main-img">
-                        <img src="./images/image-product-1.jpg" id="main-img" />
+                        <img src="../images/image-product-1.jpg" id="main-img" />
                         <div className="arrows">
                             <div className="arrow" onClick={prevImg}>
-                                <img src="./images/icon-previous.svg" />
+                                <img src="../images/icon-previous.svg" />
                             </div>
                             <div className="arrow" onClick={nextImg}>
-                                <img src="./images/icon-next.svg" />
+                                <img src="../images/icon-next.svg" />
                             </div>
                         </div>
                     </div>
                     <div className="thumbnails">
-                        <img className="active" src="./images/image-product-1-thumbnail.jpg" onClick={addMainImg} />
-                        <img src="./images/image-product-2-thumbnail.jpg" onClick={addMainImg} />
-                        <img src="./images/image-product-3-thumbnail.jpg" onClick={addMainImg} />
-                        <img src="./images/image-product-4-thumbnail.jpg" onClick={addMainImg} />
+                        <img className="active" src="../images/image-product-1-thumbnail.jpg" onClick={addMainImg} />
+                        <img src="../images/image-product-2-thumbnail.jpg" onClick={addMainImg} />
+                        <img src="../images/image-product-3-thumbnail.jpg" onClick={addMainImg} />
+                        <img src="../images/image-product-4-thumbnail.jpg" onClick={addMainImg} />
                     </div>
                 </div>
             </div>
