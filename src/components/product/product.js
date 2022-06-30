@@ -42,7 +42,7 @@ function Product(props) {
             const productImgs = document.querySelectorAll(".product-image .thumbnails img"),
             mainImgProduct = document.querySelectorAll("#main-img");
             mainImgProduct.forEach(img => {
-                img.src = productImgs[idxImg].src.replace("-thumbnail", " ");
+                img.src = productImgs[idxImg].src.replace("-thumbnail", "");
             });
         setIdxImg(idxImg + 1);
         if(idxImg >= productImgs.length-1)
