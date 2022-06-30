@@ -33,15 +33,15 @@ function Navbar(props) {
                 <div className="navbar">
                     <div className="brand-nav">
                         <div className="bar">
-                            <img src="../images/icon-menu.svg" onClick={showMenu} />
+                            <img src="./images/icon-menu.svg" onClick={showMenu} />
                         </div>
                         <div className="brand">
-                            <img src="../images/logo.svg" />
+                            <img src="./images/logo.svg" />
                         </div>
                         <div className="nav">
                             <ul>
                                 <div className="close" onClick={hiddenMenu}>
-                                    <img src="../images/icon-close.svg" />
+                                    <img src="./images/icon-close.svg" />
                                 </div>
                                 <div className="navbar-nav">
                                     <li>
@@ -66,20 +66,20 @@ function Navbar(props) {
                     <div className="card-profile">
                         <div className="card" onClick={showAddToCard}>
                             <div className="sale">{props.numProduct}</div>
-                            <img src="../images/icon-cart.svg" />
+                            <img src="./images/icon-cart.svg" />
                             <div className="add-to-card hidden" onClick={(e) => {e.stopPropagation()}}>
                                 <h4>Card</h4>
                                 <div className="items">
                                     <div className="item">
                                         <div className="product">
-                                            <img src="../images/image-product-1-thumbnail.jpg" />
+                                            <img src="./images/image-product-1-thumbnail.jpg" />
                                         </div>
                                         <div className="info">
                                             <p>Fall Limited Edition Sneakers</p>
                                             <p>$125.00 x {props.numProduct} <b>${125 * props.numProduct}</b></p>
                                         </div>
                                         <div className="delete" onClick={removeProduct}>
-                                            <img src="../images/icon-delete.svg"  />
+                                            <img src="./images/icon-delete.svg"  />
                                         </div>
                                     </div>
                                     <div className="btn">
@@ -90,7 +90,7 @@ function Navbar(props) {
                             </div>
                         </div>
                         <div className="profile">
-                            <img src="../images/image-avatar.png" />
+                            <img src="./images/image-avatar.png" />
                         </div>
                     </div>
                 </div>
