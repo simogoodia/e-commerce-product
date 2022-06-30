@@ -1,3 +1,8 @@
+.c {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
 .product-page {
     padding-top: 60px;
     display: flex;
@@ -167,6 +172,12 @@
 }
 .product-page .product-details .items-add-card .add-card:hover {
     opacity: 0.6;
+}
+@media screen and (max-width: 991px) {
+    .product-details {
+        padding: 0 15px;
+        margin: 0 auto;
+    }
 }
 @media screen and (max-width: 991px) {
     .product-page .product-details {

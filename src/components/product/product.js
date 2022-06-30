@@ -31,18 +31,32 @@ function Product(props) {
     }
     const prevImg = () => {
         const productImgs = document.querySelectorAll(".product-image .thumbnails img"),
-        mainImgProduct = document.querySelectorAll("#main-img");
+            mainImgProduct = document.querySelectorAll("#main-img"),
+            productImgsPopup = document.querySelectorAll(".popup .product-image .thumbnails img");
         mainImgProduct.forEach(img => {
             img.src = productImgs[idxImg].src.replace("-thumbnail", "");
         });
         setIdxImg(idxImg - 1);
         if(idxImg <= 1)
-        setIdxImg(productImgs.length-1);
+            setIdxImg(productImgs.length-1);
+        removeActive(productImgs);
+        removeActive(productImgsPopup);
+        productImgsPopup[idx].classList.add("active");
+        setIdx(idx - 1);
+        if(idx < 0)
+            setIdx(productImgsPopup.length-1);
+        setIdx(idx - 1);
     }
     const removeActive = (element) => {
         element.forEach(img => {
             img.classList.remove("active");
         });
+    }
+    const addActive = () => {
+        const productImgs = document.querySelectorAll(".product-image .thumbnails img"),
+            productImgsPopup = document.querySelectorAll(".popup .product-image .thumbnails img");
+        productImgs[idx].classList.add("active");
+        productImgsPopup[idx].classList.add("active");
     }
     const nextImg = () => {
         const productImgs = document.querySelectorAll(".product-image .thumbnails img"),
@@ -55,14 +69,16 @@ function Product(props) {
         if(idxImg >= productImgs.length-1)
             setIdxImg(1);
         removeActive(productImgs);
-        productImgs[idxImg].classList.add("active");
         removeActive(productImgsPopup);
-        productImgsPopup[idxImg].classList.add("active");
+        addActive();
+        setIdx(idx + 1);
+        if(idx >= productImgsPopup.length-1)
+            setIdx(0);
     }
 
     return (
         <>
-            <div className="container">
+            <div className="c">
                 <div className="product-page">
                     <div className="product-image">
                         <div className="main-img"  onClick={() =>{
