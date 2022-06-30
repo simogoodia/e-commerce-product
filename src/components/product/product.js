@@ -82,6 +82,9 @@ function Product(props) {
                 <div className="product-page">
                     <div className="product-image">
                         <div className="main-img"  onClick={() =>{
+                            if(window.matchMedia("(max-width: 991px)").matches)
+                                document.querySelector(".popup").classList.remove("show");
+                            else
                                 document.querySelector(".popup").classList.add("show");
                             }} >
                             <img src="./images/image-product-1.jpg" id="main-img"/>
