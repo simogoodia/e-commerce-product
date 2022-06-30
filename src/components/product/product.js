@@ -57,18 +57,18 @@ function Product(props) {
                         <div className="main-img"  onClick={() =>{
                                 document.querySelector(".popup").classList.add("show");
                             }} >
-                            <img src="../images/image-product-1.jpg" id="main-img"/>
+                            <img src="./images/image-product-1.jpg" id="main-img"/>
                             <div className="arrows">
                                 <div className="arrow" >
-                                    <img src="../images/icon-previous.svg" onClick={prevImg} />
+                                    <img src="./images/icon-previous.svg" onClick={prevImg} />
                                 </div>
                                 <div className="arrow" >
-                                    <img src="../images/icon-next.svg" onClick={nextImg} />
+                                    <img src="./images/icon-next.svg" onClick={nextImg} />
                                 </div>
                             </div>
                         </div>
                         <div className="thumbnails">
-                            <img className="active" src="../images/image-product-1-thumbnail.jpg" onClick={addMainImg} />
+                            <img className="active" src="./images/image-product-1-thumbnail.jpg" onClick={addMainImg} />
                             <img src="./images/image-product-2-thumbnail.jpg" onClick={addMainImg} />
                             <img src="./images/image-product-3-thumbnail.jpg" onClick={addMainImg} />
                             <img src="./images/image-product-4-thumbnail.jpg" onClick={addMainImg} />
