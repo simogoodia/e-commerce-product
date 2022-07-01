@@ -7,9 +7,11 @@ import "./navbar.css";
 function Navbar(props) {
     useEffect(() => {
         const sale = document.querySelector(".card-profile .card .sale");
-        if(props.numProduct <= 0) {
+        if(props.numProduct <= 1) {
             sale.classList.remove("show");
         }
+        if(props.numProduct <= 0)
+            props.setNumProduct(1);
     }, [props.numProduct]);
     const showAddToCard = () => {
         document.querySelector(".card").classList.toggle("show");

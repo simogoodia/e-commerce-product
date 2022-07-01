@@ -4,11 +4,11 @@ import Product from "./components/product/product";
 
 
 function App() {
-  const [numProduct, setNumProduct] = useState(0);
+  const [numProduct, setNumProduct] = useState(1);
   useEffect(() => {
     const addToCard = document.querySelector(".card-profile .card .add-to-card");
     const card = document.querySelector(".card-profile .card");
-    if(numProduct <= 0) {
+    if(numProduct < 1) {
       addToCard.classList.remove("show");
       addToCard.classList.add("hidden");
       card.classList.remove("show");

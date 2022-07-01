@@ -9,10 +9,10 @@ function Product(props) {
     useEffect(() => {
         const minus = document.querySelector(".items .minus img");
         const productImgs = document.querySelectorAll(".product-image .thumbnails img");
-        if(props.numProduct <= 0)
-        minus.classList.add("active");
+        if(props.numProduct <= 1)
+            minus.classList.add("active");
         else
-        minus.classList.remove("active");
+            minus.classList.remove("active");
         productImgs.forEach(img => {
             img.addEventListener("click", () => {
                 productImgs.forEach(img => {
